@@ -16,7 +16,7 @@ public class GeneratedTest {
         ArrayList arrayList = new ArrayList();
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("roleid"+":"+"authority name");
         arrayList.add(simpleGrantedAuthority);
-        String s = jwtTokenUtil.generateToken(new User("user", "psw", arrayList));
+        String s = jwtTokenUtil.generateToken(new User("winter", "psw", arrayList));
         System.out.println(s);
     }
 

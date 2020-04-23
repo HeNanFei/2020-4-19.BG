@@ -5,9 +5,11 @@ public class GeneratedTest2 {
     public static void main(String[] args) {
         System.out.println( BCrypt.hashpw("psw",BCrypt.gensalt()));
 
-        System.out.println(BCrypt.checkpw("123","$2a$10$kCN9r5pqPt0zIIE5C9GbMuTaLJd7p3IzAKRDtpA.qx7zNkljx5TF2"));
+        System.out.println(BCrypt.checkpw("psw","$2a$10$XoFQ/IbVfmhuMm.HeQNDO.1NtM3jNaKa0WrbXHjreEq5cT.ClDOxO"));
 
+/*
         System.out.println(BCrypt.checkpw("123","$2a$10$T3pn8ZfyrTQ1F31bHrudYesv/ooQnzX9eNlNpnKvAxEr4O213AM8e"));
+*/
     }
 
 }

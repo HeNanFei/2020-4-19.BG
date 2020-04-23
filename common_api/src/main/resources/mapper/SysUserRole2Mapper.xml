@@ -253,4 +253,13 @@
       sys_role_id = #{sysRoleId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <select id="getUserRoles2" parameterType="java.lang.Integer" resultType="com.zjt.common.entity.SysRole2">
+    select sysrole.sys_role_id,sysrole.sys_user_id,sysrole.sys_role_id from sys_role2 sysrole JOIN sys_user2 user2 on sysrole.sys_user_id =#{uid} ;
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from sys_role2;
+  </select>
+
 </mapper>

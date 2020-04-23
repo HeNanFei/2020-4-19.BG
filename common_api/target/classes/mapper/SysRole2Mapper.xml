@@ -253,4 +253,12 @@
       available = #{available,jdbcType=CHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="getUserRoleIdsByUid" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select userrole.sys_role_id from sys_user2 sysuser join
+            sys_user_role2 userrole on sysuser.id = userrole.sys_user_id
+            and sysuser.id = #{uid}
+  </select>
+  <select id="getUserRolesByUid" parameterType="java.lang.Integer" resultType="com.zjt.common.entity.SysRole2">
+     select * from sys_role2 where id in (select userrole.sys_role_id from sys_user2 sysuser join sys_user_role2 userrole on sysuser.id = userrole.sys_user_id and sysuser.id = #{uid});
+  </select>
 </mapper>

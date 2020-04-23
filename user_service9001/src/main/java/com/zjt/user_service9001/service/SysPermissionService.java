@@ -16,4 +16,6 @@ public interface SysPermissionService {
 
     void updateSysPermission(SysPermission2 sysPermission);
 
+    List<SysPermission2> getAllPermissionByUid(Integer uid);
+
 }

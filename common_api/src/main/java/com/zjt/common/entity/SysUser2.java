@@ -1,5 +1,7 @@
 package com.zjt.common.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class SysUser2 {
@@ -82,6 +84,7 @@ public class SysUser2 {
      *
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     /**
@@ -109,6 +112,7 @@ public class SysUser2 {
      *
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createtime;
 
     /**
@@ -118,6 +122,7 @@ public class SysUser2 {
      *
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatetime;
 
     /**

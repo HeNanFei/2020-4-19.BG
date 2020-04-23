@@ -1,5 +1,6 @@
 package com.zjt.common.inter;
 
+import com.zjt.common.entity.SysRole2;
 import com.zjt.common.entity.SysUserRole2;
 import com.zjt.common.entity.SysUserRole2Example;
 import java.util.List;
@@ -95,4 +96,7 @@ public interface SysUserRole2Mapper {
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
     int updateByPrimaryKey(SysUserRole2 record);
+
+    List<SysRole2> getUserRoles2(Integer uid);
+
 }

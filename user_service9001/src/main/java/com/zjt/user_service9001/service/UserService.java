@@ -4,6 +4,7 @@ import com.zjt.common.entity.SysUser2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface UserService {
@@ -19,5 +20,7 @@ public interface UserService {
     SysUser2 getUserById(Integer id);
 
     SysUser2 getUserByUsername(String username);
+
+    Map checkUser(SysUser2 sysUser2);
 
 }

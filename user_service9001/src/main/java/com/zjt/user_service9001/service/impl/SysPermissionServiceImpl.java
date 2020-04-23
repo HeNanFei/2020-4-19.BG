@@ -16,6 +16,8 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     @Autowired
     private SysPermission2Mapper sysPermissionMapper;
 
+
+
     @Override
     public SysPermission2 findSysPermissionById(Integer id) {
         return sysPermissionMapper.selectByPrimaryKey(Long.valueOf(id));
@@ -43,5 +45,10 @@ public class SysPermissionServiceImpl implements SysPermissionService {
         SysPermission2Example.Criteria criteria = sysPermissionExample.createCriteria();
         criteria.andIdEqualTo(sysPermission.getId());
         sysPermissionMapper.updateByExampleSelective(sysPermission,sysPermissionExample);
+    }
+
+    @Override
+    public List<SysPermission2> getAllPermissionByUid(Integer uid) {
+        return sysPermissionMapper.getAllPermissionByUid(uid);
     }
 }

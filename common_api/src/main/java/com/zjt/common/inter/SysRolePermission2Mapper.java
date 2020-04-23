@@ -95,4 +95,7 @@ public interface SysRolePermission2Mapper {
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
     int updateByPrimaryKey(SysRolePermission2 record);
+
+
+
 }

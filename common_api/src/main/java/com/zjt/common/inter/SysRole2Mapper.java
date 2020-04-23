@@ -95,4 +95,8 @@ public interface SysRole2Mapper {
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
     int updateByPrimaryKey(SysRole2 record);
+
+    List<SysRole2> getUserRoleIdsByUid(Integer uid);
+
+    List<Integer> getUserRolesByUid(Integer uid);
 }

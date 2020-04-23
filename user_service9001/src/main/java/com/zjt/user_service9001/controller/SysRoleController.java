@@ -54,7 +54,7 @@ public class SysRoleController  implements WebBindingInitializer {
 
     @ApiOperation(value = "根据姓名查询角色")
     @ResponseBody
-    @RequestMapping("/role/find/{rolename}")
+    @RequestMapping("/role/find/name/{rolename}")
     public SysRole2 getSysRole2ByName(@PathVariable String rolename){ return roleService.getRole2ByRole2name(rolename); }
 
     @Override

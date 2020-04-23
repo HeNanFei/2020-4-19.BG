@@ -28,9 +28,9 @@ public class DynamicAccessDecisionManager implements AccessDecisionManager {
 
             //将访问所需资源或用户拥有资源进行比对
             String needAuthority = configAttribute.getAttribute();
-            //logger.info("系统定义权限"+needAuthority+"用户权限"+authentication.getAuthorities());
+            logger.info("系统定义权限"+needAuthority+"用户权限"+authentication.getAuthorities());
             for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
-                //logger.info("需要验证的权限"+needAuthority+"用户权限"+grantedAuthority+"DynamicAccesssDecisionManager 权限匹配"+needAuthority.trim().equals(grantedAuthority.getAuthority()));
+                logger.info("需要验证的权限"+needAuthority+"用户权限"+grantedAuthority+"DynamicAccesssDecisionManager 权限匹配"+needAuthority.trim().equals(grantedAuthority.getAuthority()));
                 if (needAuthority.trim().equals(grantedAuthority.getAuthority())) {
                     return;
                 }

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Api(tags = "UserController", description = "用户管理")
 @Controller
@@ -46,7 +48,7 @@ public class UserController  implements WebBindingInitializer {
     @ApiOperation(value = "列出所有用户")
     @ResponseBody
     @RequestMapping("/user/findall/")
-    public List<SysUser2> updateUser( ){ return userService.findUser(); }
+    public List<SysUser2> findAllUser( ){ return userService.findUser(); }
 
     @ApiOperation(value = "根据id查询用户")
     @ResponseBody
@@ -55,8 +57,17 @@ public class UserController  implements WebBindingInitializer {
 
     @ApiOperation(value = "根据姓名查询用户")
     @ResponseBody
-    @RequestMapping("/user/find/{username}")
+    @RequestMapping("/user/find/name/{username}")
     public SysUser2 getUserByName(@PathVariable String username){ return userService.getUserByUsername(username); }
+
+    @ApiOperation(value = "前端用户检测")
+    @ResponseBody
+    @RequestMapping("/check/result")
+    public Map checkUserByInfor(SysUser2 sysUser2){
+        Map map = userService.checkUser(sysUser2);
+
+        return map;
+    }
 
     @Override
     public void initBinder(WebDataBinder webDataBinder) {

@@ -1,18 +1,35 @@
 package com.zjt.user_service9001.service.impl;
 
+import com.zjt.common.entity.SysPermission2;
 import com.zjt.common.entity.SysUser2;
 import com.zjt.common.entity.SysUser2Example;
+import com.zjt.common.inter.SysPermission2Mapper;
 import com.zjt.common.inter.SysUser2Mapper;
+import com.zjt.security.utils.JwtTokenUtil;
 import com.zjt.user_service9001.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     private SysUser2Mapper sysUserMapper;
+
+    @Autowired
+    private SysPermission2Mapper sysPermission2Mapper;
 
     @Override
     public void addUser(SysUser2 sysUser) {
@@ -53,5 +70,26 @@ public class UserServiceImpl implements UserService {
         SysUser2Example.Criteria criteria = sysUserExample.createCriteria();
         criteria.andUsernameEqualTo(username);
         return sysUserMapper.selectByExample(sysUserExample).get(0);
+    }
+
+    @Override
+    public Map checkUser(SysUser2 sysUser2) {
+
+        Map map = new HashMap();
+        try {
+            SysUser2 userByUsername = this.getUserByUsername(sysUser2.getUsername());
+            List<SysPermission2> allPermissionByUid = sysPermission2Mapper.getAllPermissionByUid(sysUser2.getId());
+
+            ArrayList<GrantedAuthority> list = new ArrayList<>();
+            list.stream().forEach(n -> list.add(new SimpleGrantedAuthority(n.getAuthority())));
+            String s = jwtTokenUtil.generateToken(new User(userByUsername.getUsername(), userByUsername.getPassword(), list));
+            boolean checkpw = BCrypt.checkpw(sysUser2.getPassword(), userByUsername.getPassword());
+            map.put("result",checkpw);
+            map.put("token",s);
+        }catch (Exception e){
+
+        }
+
+        return map;
     }
 }

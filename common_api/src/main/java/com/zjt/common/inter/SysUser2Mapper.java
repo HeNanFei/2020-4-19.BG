@@ -95,4 +95,6 @@ public interface SysUser2Mapper {
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
     int updateByPrimaryKey(SysUser2 record);
+
+    void selectByExample();
 }

@@ -95,4 +95,9 @@ public interface SysPermission2Mapper {
      * @mbg.generated Sun Apr 19 09:54:50 CST 2020
      */
     int updateByPrimaryKey(SysPermission2 record);
+
+    List<SysPermission2> getAllPermissionByUid(Integer uid);
+
+
+
 }

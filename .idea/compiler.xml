@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="user_service9001" />
+        <module name="interservice" />
         <module name="common_api" />
         <module name="security_module" />
         <module name="main_project" />
@@ -18,6 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="interservice" options="-parameters" />
       <module name="user_service9001" options="-parameters" />
     </option>
   </component>

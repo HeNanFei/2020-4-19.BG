@@ -1,7 +1,7 @@
 
 spring:
   application:
-    name: nacos-userservice
+    name: userservice
   cloud:
     nacos:
       discovery:
@@ -11,5 +11,18 @@ spring:
         file-extension: yaml #指定yaml格式的配置
         namespace: caaaf8ec-7a6e-4e6f-84e2-26fc8edf72dd
         group: userservice_group
+    sentinel:
+      transport:
+        dashboard: localhost:8080 #配置Sentinel dashboard地址
+        port: 8719  #默认端口地址，如端口被占用++-
+      eager: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 server:
   port: 6699
+feign:
+  sentinel:
+    enabled: true

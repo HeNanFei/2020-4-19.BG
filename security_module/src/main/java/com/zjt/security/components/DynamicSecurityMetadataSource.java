@@ -50,8 +50,7 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
             }/*else{
                 ConfigAttribute configAttribute = new SecurityConfig("It can't be null");
                 configAttributes.add(configAttribute);
-            }
-*/
+            }*/
         }
         // 未设置操作请求权限，返回空集合
         logger.info("未设置操作请求权限，返回空集合");
