@@ -1,7 +1,6 @@
-package com.zjt.user_service9001.service;
+package com.zjt.user_service9002.service;
 
 import com.zjt.common.entity.SysUser2;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +20,6 @@ public interface UserService {
 
     SysUser2 getUserByUsername(String username);
 
-    Map checkUser(String username,String password);
+    Map checkUser(String username, String password);
 
 }

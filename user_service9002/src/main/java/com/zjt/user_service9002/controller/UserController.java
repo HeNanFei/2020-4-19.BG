@@ -1,9 +1,7 @@
-package com.zjt.user_service9001.controller;
+package com.zjt.user_service9002.controller;
 
 import com.zjt.common.entity.SysUser2;
-import com.zjt.common.handler.ApiException;
-import com.zjt.common.handler.GlobalExceptionHandler;
-import com.zjt.user_service9001.service.UserService;
+import com.zjt.user_service9002.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -11,12 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.WebBindingInitializer;
-import org.springframework.web.context.request.WebRequest;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -65,7 +64,7 @@ public class UserController  implements WebBindingInitializer {
     @RequestMapping("/check/result")
     public Map checkUserByInfor(@RequestParam String username,@RequestParam String password){
         Map map = userService.checkUser(username,password);
-        map.put("part11","part11");
+        map.put("part2","part2");
         return map;
     }
 

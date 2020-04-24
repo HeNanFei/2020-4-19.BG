@@ -1,4 +1,4 @@
-package com.zjt.user_service9001.service.impl;
+package com.zjt.user_service9002.service.impl;
 
 import com.zjt.common.entity.SysPermission2;
 import com.zjt.common.entity.SysUser2;
@@ -6,9 +6,8 @@ import com.zjt.common.entity.SysUser2Example;
 import com.zjt.common.inter.SysPermission2Mapper;
 import com.zjt.common.inter.SysUser2Mapper;
 import com.zjt.security.utils.JwtTokenUtil;
-import com.zjt.user_service9001.service.UserService;
+import com.zjt.user_service9002.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

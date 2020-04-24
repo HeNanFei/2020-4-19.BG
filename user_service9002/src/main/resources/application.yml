@@ -5,7 +5,7 @@ spring:
     username: root
     password: wcjb
   profiles:
-    active: dev
+    active: part2
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.zjt.common.entity
