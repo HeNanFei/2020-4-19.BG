@@ -1,31 +1,36 @@
-server:
-  port: 8006
+#server:
+#  port: 8006
 
 spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8080 #配置Sentinel dashboard地址
+#        port: 8719  #默认端口地址，如端口被占用++-
 
-    sentinel:
-      transport:
-        dashboard: localhost:8080 #配置Sentinel dashboard地址
-        port: 8719  #默认端口地址，如端口被占用++-
-
-  application:
-    name: feignservice
+#  application:
+#    name: feignservice
   datasource:
     url: jdbc:mysql://localhost:3306/last?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
     username: root
     password: wcjb
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-
-feign:
-  sentinel:
-    enabled: true # 激活Sentinel对Feign的支持
-  httpclient:
-    enabled: true
+  profiles:
+    active: dev
+#  zipkin:
+#    base-url: http://localhost:9411
+#  sleuth:
+#      sampler:
+#       probability: 1 #采样率值为0与1之间1表示全部采集
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#feign:
+#  sentinel:
+#    enabled: true # 激活Sentinel对Feign的支持
+#  httpclient:
+#    enabled: true

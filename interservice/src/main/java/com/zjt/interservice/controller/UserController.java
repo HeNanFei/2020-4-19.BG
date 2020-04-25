@@ -1,6 +1,9 @@
 package com.zjt.interservice.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.zjt.common.entity.SysUser2;
+import com.zjt.common.handler.GlobalSentinelHandler;
 import com.zjt.interservice.inter.UserInter;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -12,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class UserController {
+
     @Autowired
     private UserInter userInter;
     @ApiOperation(value = "根据id删除用户")
@@ -48,7 +54,9 @@ public class UserController {
     @RequestMapping("/user/find/name/{username}")
     public SysUser2 getUserByName(@PathVariable @RequestParam String username){ return userInter.getUserByName(username); }
 
+
     @ApiOperation(value = "前端用户检测")
+    @SentinelResource(value = "userservice",blockHandlerClass = GlobalSentinelHandler.class,blockHandler = "checkUserByInfor2")
     @ResponseBody
     @RequestMapping("/check/result")
     public Map checkUserByInfor(@RequestParam String username,@RequestParam String password){
@@ -56,5 +64,7 @@ public class UserController {
 
         return userInter.checkUserByInfor(username,password);
     }
+
+
 
 }
