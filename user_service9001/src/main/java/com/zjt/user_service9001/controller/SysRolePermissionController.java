@@ -2,6 +2,7 @@ package com.zjt.user_service9001.controller;
 
 import com.zjt.common.entity.SysPermission2;
 import com.zjt.common.entity.SysRolePermission2;
+import com.zjt.common.handler.CommonResult;
 import com.zjt.user_service9001.service.SysPermissionService;
 import com.zjt.user_service9001.service.SysRolePermissionService;
 import io.swagger.annotations.Api;
@@ -26,26 +27,60 @@ public class SysRolePermissionController {
 
     @ApiOperation(value = "根据id删除角色权限")
     @RequestMapping("/sysrolepermission/delete/{uid}")
-    public void deleteSysRolePermission2(@PathVariable @ApiParam("权限id") Integer uid){
-        sysRolePermissionService.deleSysRolePermission2(uid);
+    public CommonResult deleteSysRolePermission2(@PathVariable @ApiParam("权限id") Integer uid){
+        int i = sysRolePermissionService.deleSysRolePermission2(uid);
+        if(i == 0){
+            return CommonResult.failed(null,"删除失败");
+        }else{
+            return  CommonResult.success(null,"删除成功");
+        }
     }
 
     @ApiOperation(value = "添加角色权限")
     @RequestMapping("/SysRolePermission2/add/")
-    public void addSysRolePermission2(@ApiParam("权限实体") SysRolePermission2 sysPermission){ sysRolePermissionService.addSysRolePermission2(sysPermission); }
+    public CommonResult addSysRolePermission2(@ApiParam("权限实体") SysRolePermission2 sysPermission){
+        int i = sysRolePermissionService.addSysRolePermission2(sysPermission);
+        if(i == 0){
+            return CommonResult.failed(null,"添加失败");
+        }else{
+            return  CommonResult.success(null,"添加成功");
+        }
+    }
 
     @ApiOperation(value = "修改角色权限")
     @RequestMapping("/SysRolePermission2/update/")
-    public void updateSysRolePermission2(@ApiParam("角色权限实体")  SysRolePermission2 sysPermission){ sysRolePermissionService.updateSysRolePermission2(sysPermission); }
+    public CommonResult updateSysRolePermission2(@ApiParam("角色权限实体")  SysRolePermission2 sysPermission){
+        int i = sysRolePermissionService.updateSysRolePermission2(sysPermission);
+        if(i == 0){
+            return CommonResult.failed("修改失败");
+        }else{
+            return CommonResult.success("修改成功");
+        }
+    }
 
     @ApiOperation(value = "列出所有角色权限")
     @ResponseBody
     @RequestMapping("/SysRolePermission2/findall/")
-    public List< SysRolePermission2> updateSysRolePermission2( ){ return sysRolePermissionService.findSysRolePermission2(); }
+    public CommonResult updateSysRolePermission2( ){
+        List<SysRolePermission2> sysRolePermission2 = sysRolePermissionService.findSysRolePermission2();
+        if(sysRolePermission2  == null){
+            return  CommonResult.failed("value is null");
+        }else{
+            return  CommonResult.success(sysRolePermission2);
+        }
+
+    }
 
     @ApiOperation(value = "根据id查询角色权限")
     @ResponseBody
     @RequestMapping("/SysRolePermission2/find/{id}")
-    public SysRolePermission2 getSysRolePermission2ById(@PathVariable Integer id){ return sysRolePermissionService.getSysRolePermission2ById(id); }
+    public CommonResult getSysRolePermission2ById(@PathVariable Integer id){
+        SysRolePermission2 sysRolePermission2ById = sysRolePermissionService.getSysRolePermission2ById(id);
+        if(sysRolePermission2ById == null){
+            return  CommonResult.failed("value is null");
+        }else{
+            return  CommonResult.success(sysRolePermission2ById);
+        }
+    }
 
 }

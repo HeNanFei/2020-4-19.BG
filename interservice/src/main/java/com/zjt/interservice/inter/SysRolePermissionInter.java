@@ -1,6 +1,7 @@
 package com.zjt.interservice.inter;
 
 import com.zjt.common.entity.SysRolePermission2;
+import com.zjt.common.handler.CommonResult;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,23 +17,23 @@ import java.util.List;
 public interface SysRolePermissionInter {
     @ApiOperation(value = "根据id删除角色权限")
     @RequestMapping("/sysrolepermission/delete/{uid}")
-    public void deleteSysRolePermission2(@PathVariable @ApiParam("权限id") Integer uid);
+    public CommonResult deleteSysRolePermission2(@PathVariable @ApiParam("权限id") Integer uid);
 
     @ApiOperation(value = "添加角色权限")
     @RequestMapping("/SysRolePermission2/add/")
-    public void addSysRolePermission2(@ApiParam("权限实体") SysRolePermission2 sysPermission);
+    public CommonResult addSysRolePermission2(@ApiParam("权限实体") SysRolePermission2 sysPermission);
 
     @ApiOperation(value = "修改角色权限")
     @RequestMapping("/SysRolePermission2/update/")
-    public void updateSysRolePermission2(@ApiParam("角色权限实体")  SysRolePermission2 sysPermission);
+    public CommonResult updateSysRolePermission2(@ApiParam("角色权限实体")  SysRolePermission2 sysPermission);
 
     @ApiOperation(value = "列出所有角色权限")
     @ResponseBody
     @RequestMapping("/SysRolePermission2/findall/")
-    public List< SysRolePermission2> updateSysRolePermission2( );
+    public CommonResult updateSysRolePermission2( );
 
     @ApiOperation(value = "根据id查询角色权限")
     @ResponseBody
     @RequestMapping("/SysRolePermission2/find/{id}")
-    public SysRolePermission2 getSysRolePermission2ById(@PathVariable Integer id);
+    public CommonResult getSysRolePermission2ById(@PathVariable Integer id);
 }

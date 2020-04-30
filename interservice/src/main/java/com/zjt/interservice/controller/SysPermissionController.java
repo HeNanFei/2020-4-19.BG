@@ -1,6 +1,7 @@
 package com.zjt.interservice.controller;
 
 import com.zjt.common.entity.SysPermission2;
+import com.zjt.common.handler.CommonResult;
 import com.zjt.interservice.inter.SysPermissionInter;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -19,28 +20,26 @@ public class SysPermissionController {
     private SysPermissionInter sysPermissionInter;
     @ApiOperation(value = "根据id删除权限")
     @RequestMapping("/syspermission/delete/{uid}")
-    public void deleteSysPermission(@PathVariable @ApiParam("权限id") Integer uid){
-        sysPermissionInter.deleteSysPermission(uid);
+    public CommonResult deleteSysPermission(@PathVariable @ApiParam("权限id") Integer uid){
+        return sysPermissionInter.deleteSysPermission(uid);
     }
 
     @ApiOperation(value = "添加权限")
     @RequestMapping("/SysPermission/add/")
-    public void addSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){ sysPermissionInter.addSysPermission(sysPermission); }
+    public CommonResult addSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){ return sysPermissionInter.addSysPermission(sysPermission); }
 
     @ApiOperation(value = "修改权限")
     @RequestMapping("/SysPermission/update/")
-    public void updateSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){ sysPermissionInter.updateSysPermission(sysPermission); }
+    public CommonResult updateSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){ return sysPermissionInter.updateSysPermission(sysPermission); }
 
     @ApiOperation(value = "列出所有权限")
     @ResponseBody
     @RequestMapping("/SysPermission/findall/")
-    public List< SysPermission2> updateSysPermission( ){ return sysPermissionInter.updateSysPermission(); }
+    public CommonResult updateSysPermission( ){ return sysPermissionInter.updateSysPermission(); }
 
     @ApiOperation(value = "根据id查询权限")
     @ResponseBody
     @RequestMapping("/SysPermission/find/{id}")
-    public SysPermission2 getSysPermissionById(@PathVariable Integer id){ return sysPermissionInter.getSysPermissionById(id); }
-
-
+    public CommonResult getSysPermissionById(@PathVariable Integer id){ return sysPermissionInter.getSysPermissionById(id); }
 
 }

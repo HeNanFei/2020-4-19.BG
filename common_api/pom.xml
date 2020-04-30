@@ -43,6 +43,12 @@
             <version>1.18.12</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>1.7.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

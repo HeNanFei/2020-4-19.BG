@@ -1,6 +1,7 @@
 package com.zjt.user_service9001.controller;
 
 import com.zjt.common.entity.SysRole2;
+import com.zjt.common.handler.CommonResult;
 import com.zjt.user_service9001.service.SysRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,32 +31,74 @@ public class SysRoleController  implements WebBindingInitializer {
 
     @ApiOperation(value = "根据id删除角色")
     @RequestMapping("/role/delete/{uid}")
-    public void deleteSysRole2(@PathVariable @ApiParam("角色id") Integer uid){
-        roleService.deleRole2(uid);
+    public CommonResult deleteSysRole2(@PathVariable @ApiParam("角色id") Integer uid){
+        int i = roleService.deleRole2(uid);
+        if(i == 0){
+            return CommonResult.failed(null,"删除失败");
+        }else{
+            return  CommonResult.success(null,"删除成功");
+        }
     }
 
     @ApiOperation(value = "添加角色")
     @RequestMapping("/role/add/")
-    public void addSysRole2(@ApiParam("角色实体") SysRole2 role){ roleService.addRole2(role); }
+    public CommonResult  addSysRole2(@ApiParam("角色实体") SysRole2 role){
+        int i = roleService.addRole2(role);
+        if(i == 0){
+            return CommonResult.failed("添加失败");
+        }else{
+            return CommonResult.success("添加成功");
+        }
+    }
 
     @ApiOperation(value = "修改角色")
     @RequestMapping("/role/update/")
-    public void updateSysRole2(@ApiParam("角色实体") SysRole2 role){ roleService.updateRole2(role); }
+    public CommonResult updateSysRole2(@ApiParam("角色实体") SysRole2 role){
+        int i = roleService.updateRole2(role);
+        if(i == 0){
+            return CommonResult.failed("更新失败");
+        }else{
+            return CommonResult.success("update success");
+        }
+
+    }
 
     @ApiOperation(value = "列出所有角色")
     @ResponseBody
     @RequestMapping("/role/findall/")
-    public List<SysRole2> updateSysRole2( ){ return roleService.findRole2(); }
+    public CommonResult updateSysRole2( ){
+        List<SysRole2> role2 = roleService.findRole2();
+        if(role2  == null){
+            return  CommonResult.failed("value is null");
+        }else{
+            return  CommonResult.success(role2);
+        }
+
+    }
 
     @ApiOperation(value = "根据id查询角色")
     @ResponseBody
     @RequestMapping("/role/find/{id}")
-    public SysRole2 getSysRole2ById(@PathVariable long id){ return roleService.getRole2ById(id); }
+    public CommonResult getSysRole2ById(@PathVariable long id){
+        SysRole2 role2ById = roleService.getRole2ById(id);
+        if(role2ById == null){
+            return  CommonResult.failed("value is null");
+        }else{
+            return  CommonResult.success(role2ById);
+        }
+    }
 
     @ApiOperation(value = "根据姓名查询角色")
     @ResponseBody
     @RequestMapping("/role/find/name/{rolename}")
-    public SysRole2 getSysRole2ByName(@PathVariable String rolename){ return roleService.getRole2ByRole2name(rolename); }
+    public CommonResult getSysRole2ByName(@PathVariable String rolename){
+        SysRole2 role2ByRole2name = roleService.getRole2ByRole2name(rolename);
+        if(role2ByRole2name == null){
+            return  CommonResult.failed("value is null");
+        }else{
+            return  CommonResult.success(role2ByRole2name);
+        }
+    }
 
     @Override
     public void initBinder(WebDataBinder webDataBinder) {

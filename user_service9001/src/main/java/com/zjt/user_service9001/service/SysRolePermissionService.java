@@ -5,11 +5,11 @@ import com.zjt.common.entity.SysRolePermission2;
 import java.util.List;
 
 public interface SysRolePermissionService {
-    void addSysRolePermission2( SysRolePermission2 sysSysRolePermission2);
+    int addSysRolePermission2( SysRolePermission2 sysSysRolePermission2);
 
-    void deleSysRolePermission2(Integer uid);
+    int deleSysRolePermission2(Integer uid);
 
-    void updateSysRolePermission2( SysRolePermission2 sysSysRolePermission2);
+    int updateSysRolePermission2( SysRolePermission2 sysSysRolePermission2);
 
     List< SysRolePermission2> findSysRolePermission2();
 

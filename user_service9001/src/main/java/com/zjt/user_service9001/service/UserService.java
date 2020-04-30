@@ -1,7 +1,6 @@
 package com.zjt.user_service9001.service;
 
 import com.zjt.common.entity.SysUser2;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -9,11 +8,11 @@ import java.util.Map;
 
 public interface UserService {
 
-    void addUser(SysUser2 sysUser);
+    int addUser(SysUser2 sysUser);
 
-    void deleUser(Integer uid);
+    int deleUser(Integer uid);
 
-    void updateUser(SysUser2 sysUser);
+    int updateUser(SysUser2 sysUser);
 
     List<SysUser2> findUser();
 

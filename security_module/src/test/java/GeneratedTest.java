@@ -4,9 +4,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GeneratedTest {
@@ -18,6 +16,10 @@ public class GeneratedTest {
         arrayList.add(simpleGrantedAuthority);
         String s = jwtTokenUtil.generateToken(new User("winter", "psw", arrayList));
         System.out.println(s);
+
+
+        Map map = new HashMap();
+        System.out.println(map.get("result") == null);
     }
 
 }

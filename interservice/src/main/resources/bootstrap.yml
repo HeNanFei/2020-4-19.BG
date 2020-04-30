@@ -20,7 +20,7 @@ spring:
           nacos:
             server-addr: localhost:8848
             namespace: 9676b96c-ef72-4ca5-b976-432050a7f026
-            dataId: ${spring.application.name}
+            dataId: feignservice
             groupId: feign
             data-type: json
             rule-type: flow

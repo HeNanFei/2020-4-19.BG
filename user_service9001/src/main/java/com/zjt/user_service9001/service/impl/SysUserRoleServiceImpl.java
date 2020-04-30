@@ -16,22 +16,22 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     private SysUserRole2Mapper sysSysUserRole2Mapper;
 
     @Override
-    public void addSysUserRole2(SysUserRole2 sysSysUserRole2) {
-        sysSysUserRole2Mapper.insert(sysSysUserRole2);
+    public int addSysUserRole2(SysUserRole2 sysSysUserRole2) {
+        return sysSysUserRole2Mapper.insert(sysSysUserRole2);
     }
 
     @Override
-    public void deleSysUserRole2(Integer uid) {
-        sysSysUserRole2Mapper.deleteByPrimaryKey(String.valueOf(uid));
+    public int deleSysUserRole2(Integer uid) {
+        return sysSysUserRole2Mapper.deleteByPrimaryKey(String.valueOf(uid));
     }
 
     @Override
-    public void updateSysUserRole2(SysUserRole2 sysSysUserRole2) {
+    public int updateSysUserRole2(SysUserRole2 sysSysUserRole2) {
 
         SysUserRole2Example sysSysUserRole2Example = new SysUserRole2Example();
         SysUserRole2Example.Criteria criteria = sysSysUserRole2Example.createCriteria();
         criteria.andIdEqualTo(sysSysUserRole2.getId());
-        sysSysUserRole2Mapper.updateByExampleSelective(sysSysUserRole2,sysSysUserRole2Example);
+        return sysSysUserRole2Mapper.updateByExampleSelective(sysSysUserRole2,sysSysUserRole2Example);
     }
 
     @Override

@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface SysRoleService {
 
-    void addRole2(SysRole2 sysRole2);
+    int addRole2(SysRole2 sysRole2);
 
-    void deleRole2(Integer uid);
+    int deleRole2(Integer uid);
 
-    void updateRole2(SysRole2 sysRole2);
+    int updateRole2(SysRole2 sysRole2);
 
     List<SysRole2> findRole2();
 

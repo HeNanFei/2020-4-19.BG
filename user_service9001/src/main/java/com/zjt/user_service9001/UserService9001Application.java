@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @MapperScan({"com.zjt.common.inter"})
 @SpringBootApplication(scanBasePackages = {"com.zjt"})
-public class UserService9001Application {
+public class  UserService9001Application {
 
     public static void main(String[] args) { SpringApplication.run(UserService9001Application.class, args);
 

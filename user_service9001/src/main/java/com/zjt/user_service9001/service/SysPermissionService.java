@@ -8,13 +8,13 @@ public interface SysPermissionService {
 
     SysPermission2 findSysPermissionById(Integer id);
 
-    void deleteSysPermissionById(Integer id);
+    int deleteSysPermissionById(Integer id);
 
-    void addSysPermission(SysPermission2 sysPermission);
+    int addSysPermission(SysPermission2 sysPermission);
 
     List<SysPermission2> findAllSysPermission();
 
-    void updateSysPermission(SysPermission2 sysPermission);
+    int updateSysPermission(SysPermission2 sysPermission);
 
     List<SysPermission2> getAllPermissionByUid(Integer uid);
 

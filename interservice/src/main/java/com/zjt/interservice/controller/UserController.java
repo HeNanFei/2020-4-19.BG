@@ -3,6 +3,7 @@ package com.zjt.interservice.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.zjt.common.entity.SysUser2;
+import com.zjt.common.handler.CommonResult;
 import com.zjt.common.handler.GlobalSentinelHandler;
 import com.zjt.interservice.inter.UserInter;
 import io.swagger.annotations.ApiOperation;
@@ -26,40 +27,40 @@ public class UserController {
     @Autowired
     private UserInter userInter;
     @ApiOperation(value = "根据id删除用户")
-    @RequestMapping("/user/delete/{uid}")
-    public void deleteUser(@PathVariable @ApiParam("用户id") @RequestParam Integer uid){
-        userInter.deleteUser(uid);
+    @RequestMapping("/user/delete/")
+    public CommonResult deleteUser2(@PathVariable @ApiParam("用户uid") @RequestParam Integer uid){
+        return userInter.deleteUser2(uid);
     }
 
     @ApiOperation(value = "添加用户")
     @RequestMapping("/user/add/")
-    public void addUser(@ApiParam("用户实体") @RequestParam SysUser2 user){ userInter.addUser(user); }
+    public CommonResult addUser(@ApiParam("用户实体") @RequestParam SysUser2 user){ return userInter.addUser(user); }
 
     @ApiOperation(value = "修改用户")
     @RequestMapping("/user/update/")
-    public void updateUser(@ApiParam("用户实体") @RequestParam SysUser2 user){ userInter.updateUser(user); }
+    public CommonResult updateUser(@ApiParam("用户实体") @RequestParam SysUser2 user){ return userInter.updateUser(user); }
 
     @ApiOperation(value = "列出所有用户")
     @ResponseBody
     @RequestMapping("/user/findall/")
-    public List<SysUser2> findAllUser( ){ return userInter.findAllUser(); }
+    public CommonResult findAllUser( ){ return userInter.findAllUser(); }
 
     @ApiOperation(value = "根据id查询用户")
     @ResponseBody
     @RequestMapping("/user/find/{id}")
-    public SysUser2 getUserById(@PathVariable @RequestParam Integer id){ return userInter.getUserById(id); }
+    public CommonResult getUserById(@PathVariable @RequestParam Integer id){ return userInter.getUserById(id); }
 
     @ApiOperation(value = "根据姓名查询用户")
     @ResponseBody
     @RequestMapping("/user/find/name/{username}")
-    public SysUser2 getUserByName(@PathVariable @RequestParam String username){ return userInter.getUserByName(username); }
+    public CommonResult getUserByName(@PathVariable @RequestParam String username){ return userInter.getUserByName(username); }
 
 
     @ApiOperation(value = "前端用户检测")
     @SentinelResource(value = "userservice",blockHandlerClass = GlobalSentinelHandler.class,blockHandler = "checkUserByInfor2")
     @ResponseBody
     @RequestMapping("/check/result")
-    public Map checkUserByInfor(@RequestParam String username,@RequestParam String password){
+    public CommonResult checkUserByInfor(@RequestParam String username,@RequestParam String password){
 
 
         return userInter.checkUserByInfor(username,password);

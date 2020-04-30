@@ -18,22 +18,22 @@ public class SysRolePermissionServiceImpl implements SysRolePermissionService {
     private SysRolePermission2Mapper sysSysRolePermission2Mapper;
 
     @Override
-    public void addSysRolePermission2(SysRolePermission2 sysSysRolePermission2) {
-        sysSysRolePermission2Mapper.insert(sysSysRolePermission2);
+    public int addSysRolePermission2(SysRolePermission2 sysSysRolePermission2) {
+        return sysSysRolePermission2Mapper.insert(sysSysRolePermission2);
     }
 
     @Override
-    public void deleSysRolePermission2(Integer uid) {
-        sysSysRolePermission2Mapper.deleteByPrimaryKey(String.valueOf(uid));
+    public int deleSysRolePermission2(Integer uid) {
+        return sysSysRolePermission2Mapper.deleteByPrimaryKey(String.valueOf(uid));
     }
 
     @Override
-    public void updateSysRolePermission2(SysRolePermission2 sysSysRolePermission2) {
+    public int updateSysRolePermission2(SysRolePermission2 sysSysRolePermission2) {
 
         SysRolePermission2Example sysSysRolePermission2Example = new SysRolePermission2Example();
         SysRolePermission2Example.Criteria criteria = sysSysRolePermission2Example.createCriteria();
         criteria.andIdEqualTo(sysSysRolePermission2.getId());
-        sysSysRolePermission2Mapper.updateByExampleSelective(sysSysRolePermission2,sysSysRolePermission2Example);
+        return sysSysRolePermission2Mapper.updateByExampleSelective(sysSysRolePermission2,sysSysRolePermission2Example);
     }
 
     @Override

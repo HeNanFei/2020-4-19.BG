@@ -14,22 +14,22 @@ public class SysRoleServiceImpl implements SysRoleService {
     private SysRole2Mapper sysRole2Mapper;
 
     @Override
-    public void addRole2(SysRole2 sysRole2) {
-        sysRole2Mapper.insert(sysRole2);
+    public int addRole2(SysRole2 sysRole2) {
+        return sysRole2Mapper.insert(sysRole2);
     }
 
     @Override
-    public void deleRole2(Integer uid) {
-        sysRole2Mapper.deleteByPrimaryKey(String.valueOf(uid));
+    public int deleRole2(Integer uid) {
+        return sysRole2Mapper.deleteByPrimaryKey(String.valueOf(uid));
     }
 
     @Override
-    public void updateRole2(SysRole2 sysRole2) {
+    public int updateRole2(SysRole2 sysRole2) {
         SysRole2Example sysRole2Example = new SysRole2Example();
         SysRole2Example.Criteria criteria = sysRole2Example.createCriteria();
         criteria.andIdEqualTo(sysRole2.getId());
 
-        sysRole2Mapper.updateByExampleSelective(sysRole2,sysRole2Example);
+        return sysRole2Mapper.updateByExampleSelective(sysRole2,sysRole2Example);
     }
 
     @Override

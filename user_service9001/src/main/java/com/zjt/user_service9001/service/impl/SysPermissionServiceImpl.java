@@ -24,11 +24,11 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     }
 
     @Override
-    public void deleteSysPermissionById(Integer id) { sysPermissionMapper.deleteByPrimaryKey(Long.valueOf(id)); }
+    public int deleteSysPermissionById(Integer id) { return sysPermissionMapper.deleteByPrimaryKey(Long.valueOf(id)); }
 
     @Override
-    public void addSysPermission(SysPermission2 sysPermission) {
-        sysPermissionMapper.insert(sysPermission);
+    public int addSysPermission(SysPermission2 sysPermission) {
+        return sysPermissionMapper.insert(sysPermission);
     }
 
     @Override
@@ -40,11 +40,11 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     }
 
     @Override
-    public void updateSysPermission(SysPermission2 sysPermission) {
+    public int updateSysPermission(SysPermission2 sysPermission) {
         SysPermission2Example sysPermissionExample = new SysPermission2Example();
         SysPermission2Example.Criteria criteria = sysPermissionExample.createCriteria();
         criteria.andIdEqualTo(sysPermission.getId());
-        sysPermissionMapper.updateByExampleSelective(sysPermission,sysPermissionExample);
+        return sysPermissionMapper.updateByExampleSelective(sysPermission,sysPermissionExample);
     }
 
     @Override

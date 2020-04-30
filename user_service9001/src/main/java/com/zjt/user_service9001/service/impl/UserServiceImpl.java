@@ -8,7 +8,6 @@ import com.zjt.common.inter.SysUser2Mapper;
 import com.zjt.security.utils.JwtTokenUtil;
 import com.zjt.user_service9001.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -32,22 +31,22 @@ public class UserServiceImpl implements UserService {
     private SysPermission2Mapper sysPermission2Mapper;
 
     @Override
-    public void addUser(SysUser2 sysUser) {
-        sysUserMapper.insert(sysUser);
+    public int addUser(SysUser2 sysUser) {
+        return sysUserMapper.insert(sysUser);
     }
 
     @Override
-    public void deleUser(Integer uid) {
-        sysUserMapper.deleteByPrimaryKey(uid);
+    public int deleUser(Integer uid) {
+        return sysUserMapper.deleteByPrimaryKey(uid);
     }
 
     @Override
-    public void updateUser(SysUser2 sysUser) {
+    public int updateUser(SysUser2 sysUser) {
 
         SysUser2Example sysUserExample = new SysUser2Example();
         SysUser2Example.Criteria criteria = sysUserExample.createCriteria();
         criteria.andIdEqualTo(sysUser.getId());
-        sysUserMapper.updateByExampleSelective(sysUser,sysUserExample);
+        return sysUserMapper.updateByExampleSelective(sysUser,sysUserExample);
     }
 
     @Override
@@ -84,8 +83,13 @@ public class UserServiceImpl implements UserService {
             list.stream().forEach(n -> list.add(new SimpleGrantedAuthority(n.getAuthority())));
             String s = jwtTokenUtil.generateToken(new User(userByUsername.getUsername(), userByUsername.getPassword(), list));
             boolean checkpw = BCrypt.checkpw(password, userByUsername.getPassword());
-            map.put("result",checkpw);
-            map.put("token",s);
+            if(checkpw) {
+                map.put("result", checkpw);
+                map.put("token", s);
+            }else{
+                map.put("result", false);
+
+            }
         }catch (Exception e){
 
         }
