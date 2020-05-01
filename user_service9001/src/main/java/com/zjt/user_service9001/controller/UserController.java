@@ -71,8 +71,8 @@ public class UserController  implements WebBindingInitializer {
     @ApiOperation(value = "列出所有用户")
     @ResponseBody
     @RequestMapping("/user/findall/")
-    public CommonResult findAllUser( ){
-        List<SysUser2> user = userService.findUser();
+    public CommonResult findAllUser(@ApiParam("页码") @RequestParam  Integer pageIndex,@ApiParam("条数") @RequestParam  Integer pageSize){
+        List<SysUser2> user = userService.findUser(pageIndex,pageSize);
         if(user  == null){
             return  CommonResult.failed("value is null");
         }else{

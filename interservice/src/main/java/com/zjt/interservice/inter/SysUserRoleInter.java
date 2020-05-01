@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public interface SysUserRoleInter {
     @ApiOperation(value = "列出所有用户角色")
     @ResponseBody
     @RequestMapping("/userrole/findall/")
-    public CommonResult updateSysUserRole2( );
+    public CommonResult updateSysUserRole2(@ApiParam("页码") @RequestParam Integer pageIndex, @ApiParam("条数") @RequestParam  Integer pageSize);
 
     @ApiOperation(value = "根据id查询用户角色")
     @ResponseBody

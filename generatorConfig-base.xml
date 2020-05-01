@@ -48,7 +48,7 @@
 
         <!-- 系统用户 这里不指定schema，逆向工程会查询sysuser都有哪些schema，对每个schema生成对象 -->
 
-        <table schema="root" tableName="articlea2" />
+        <table schema="root" tableName="articlea" />
         <table schema="root" tableName="sys_permission2" />
         <table schema="root" tableName="sys_role2" />
         <table schema="root" tableName="sys_role_permission2" />

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="interservice" />
         <module name="main_project" />
+        <module name="article_service" />
         <module name="common_api" />
         <module name="security_module" />
         <module name="user_service9002" />
@@ -20,6 +21,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="article_service" options="-parameters" />
       <module name="interservice" options="-parameters" />
       <module name="user_service9001" options="-parameters" />
       <module name="user_service9002" options="-parameters" />

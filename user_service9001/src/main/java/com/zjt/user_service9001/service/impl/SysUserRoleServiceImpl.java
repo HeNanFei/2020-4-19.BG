@@ -1,5 +1,7 @@
 package com.zjt.user_service9001.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zjt.common.entity.SysRolePermission2;
 import com.zjt.common.entity.SysRolePermission2Example;
 import com.zjt.common.entity.SysUserRole2;
@@ -41,7 +43,17 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
         criteria.andIdIsNotNull();
         return sysSysUserRole2Mapper.selectByExample(sysSysUserRole2Example);
     }
+    @Override
+    public List<SysUserRole2> findSysUserRole2(Integer pageIndex,Integer pageSize) {
+        SysUserRole2Example sysSysUserRole2Example = new SysUserRole2Example();
+        SysUserRole2Example.Criteria criteria = sysSysUserRole2Example.createCriteria();
+        criteria.andIdIsNotNull();
+        PageHelper.startPage(pageIndex,pageSize);
+        List<SysUserRole2> sysUserRole2s = sysSysUserRole2Mapper.selectByExample(sysSysUserRole2Example);
+        PageInfo<SysUserRole2> pageInfo = new PageInfo<>(sysUserRole2s);
 
+        return pageInfo.getList();
+    }
     @Override
     public SysUserRole2 getSysUserRole2ById(Integer id) {
         return sysSysUserRole2Mapper.selectByPrimaryKey(String.valueOf(id));

@@ -13,12 +13,13 @@ public interface SysRoleService {
 
     int updateRole2(SysRole2 sysRole2);
 
-    List<SysRole2> findRole2();
+    List<SysRole2> findRole2(Integer pageIndex,Integer PageSize);
 
     SysRole2 getRole2ById(long id);
 
     SysRole2 getRole2ByRole2name(String Role2name);
 
+    List<SysRole2> findRole2();
 
 
 }

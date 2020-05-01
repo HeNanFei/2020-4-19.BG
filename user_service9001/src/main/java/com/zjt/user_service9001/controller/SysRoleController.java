@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.WebBindingInitializer;
 
@@ -66,8 +67,8 @@ public class SysRoleController  implements WebBindingInitializer {
     @ApiOperation(value = "列出所有角色")
     @ResponseBody
     @RequestMapping("/role/findall/")
-    public CommonResult updateSysRole2( ){
-        List<SysRole2> role2 = roleService.findRole2();
+    public CommonResult updateSysRole2(@ApiParam("页码") @RequestParam Integer pageIndex, @ApiParam("条数") @RequestParam  Integer pageSize){
+        List<SysRole2> role2 = roleService.findRole2(pageIndex,pageSize);
         if(role2  == null){
             return  CommonResult.failed("value is null");
         }else{

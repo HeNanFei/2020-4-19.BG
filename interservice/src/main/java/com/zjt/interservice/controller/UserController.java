@@ -43,7 +43,7 @@ public class UserController {
     @ApiOperation(value = "列出所有用户")
     @ResponseBody
     @RequestMapping("/user/findall/")
-    public CommonResult findAllUser( ){ return userInter.findAllUser(); }
+    public CommonResult findAllUser(@ApiParam("页码") @RequestParam Integer pageIndex, @ApiParam("条数") @RequestParam  Integer pageSize){ return userInter.findAllUser(pageIndex,pageSize); }
 
     @ApiOperation(value = "根据id查询用户")
     @ResponseBody

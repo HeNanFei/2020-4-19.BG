@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class SysRolePermissionController {
     @ApiOperation(value = "列出所有角色权限")
     @ResponseBody
     @RequestMapping("/SysRolePermission2/findall/")
-    public CommonResult updateSysRolePermission2( ){ return sysRolePermissionInter.updateSysRolePermission2(); }
+    public CommonResult updateSysRolePermission2(@ApiParam("页码") @RequestParam Integer pageIndex, @ApiParam("条数") @RequestParam  Integer pageSize ){ return sysRolePermissionInter.updateSysRolePermission2(pageIndex,pageSize); }
 
     @ApiOperation(value = "根据id查询角色权限")
     @ResponseBody

@@ -1,6 +1,8 @@
 package com.zjt.user_service9001.service.impl;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zjt.common.entity.SysPermission2;
 import com.zjt.common.entity.SysPermission2Example;
 
@@ -32,11 +34,15 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     }
 
     @Override
-    public List<SysPermission2> findAllSysPermission() {
+    public List<SysPermission2> findAllSysPermission(Integer pageIndex,Integer PageSize) {
         SysPermission2Example sysPermissionExample = new SysPermission2Example();
         SysPermission2Example.Criteria criteria = sysPermissionExample.createCriteria();
         criteria.andIdIsNotNull();
-        return sysPermissionMapper.selectByExample(sysPermissionExample);
+        PageHelper.startPage(pageIndex,PageSize);
+        List<SysPermission2> sysPermission2s = sysPermissionMapper.selectByExample(sysPermissionExample);
+        PageInfo<SysPermission2> pageInfo = new PageInfo<>(sysPermission2s);
+        List<SysPermission2> list = pageInfo.getList();
+        return list;
     }
 
     @Override
@@ -50,5 +56,15 @@ public class SysPermissionServiceImpl implements SysPermissionService {
     @Override
     public List<SysPermission2> getAllPermissionByUid(Integer uid) {
         return sysPermissionMapper.getAllPermissionByUid(uid);
+    }
+
+    @Override
+    public List<SysPermission2> findAllSysPermission() {
+        SysPermission2Example sysPermissionExample = new SysPermission2Example();
+        SysPermission2Example.Criteria criteria = sysPermissionExample.createCriteria();
+        criteria.andIdIsNotNull();
+
+        return sysPermissionMapper.selectByExample(sysPermissionExample);
+
     }
 }

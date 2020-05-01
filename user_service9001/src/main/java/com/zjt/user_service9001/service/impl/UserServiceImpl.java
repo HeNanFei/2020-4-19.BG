@@ -1,5 +1,7 @@
 package com.zjt.user_service9001.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zjt.common.entity.SysPermission2;
 import com.zjt.common.entity.SysUser2;
 import com.zjt.common.entity.SysUser2Example;
@@ -55,6 +57,17 @@ public class UserServiceImpl implements UserService {
         SysUser2Example.Criteria criteria = sysUserExample.createCriteria();
         criteria.andIdIsNotNull();
         return sysUserMapper.selectByExample(sysUserExample);
+    }
+    @Override
+    public List<SysUser2> findUser(Integer pageIndex,Integer pageSize) {
+        SysUser2Example sysUserExample = new SysUser2Example();
+        SysUser2Example.Criteria criteria = sysUserExample.createCriteria();
+        criteria.andIdIsNotNull();
+        PageHelper.startPage(pageIndex,pageSize);
+        List<SysUser2> sysUser2s = sysUserMapper.selectByExample(sysUserExample);
+        PageInfo<SysUser2> pageInfo = new PageInfo<>(sysUser2s);
+
+        return pageInfo.getList();
     }
 
     @Override

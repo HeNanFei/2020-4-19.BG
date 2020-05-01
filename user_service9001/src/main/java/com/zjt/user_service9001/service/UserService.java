@@ -14,12 +14,15 @@ public interface UserService {
 
     int updateUser(SysUser2 sysUser);
 
-    List<SysUser2> findUser();
+    List<SysUser2> findUser(Integer pageIndex,Integer PageSize);
 
     SysUser2 getUserById(Integer id);
 
     SysUser2 getUserByUsername(String username);
 
     Map checkUser(String username,String password);
+
+    List<SysUser2> findUser();
+
 
 }

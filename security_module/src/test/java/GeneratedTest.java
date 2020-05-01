@@ -16,8 +16,6 @@ public class GeneratedTest {
         arrayList.add(simpleGrantedAuthority);
         String s = jwtTokenUtil.generateToken(new User("winter", "psw", arrayList));
         System.out.println(s);
-
-
         Map map = new HashMap();
         System.out.println(map.get("result") == null);
     }

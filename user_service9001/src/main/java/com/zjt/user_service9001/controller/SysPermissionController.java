@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class SysPermissionController {
     }
 
     @ApiOperation(value = "添加权限")
-    @RequestMapping("/SysPermission/add/")
+    @RequestMapping("/syspermission/add/")
     public CommonResult addSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){
         int i = sysPermissionService.addSysPermission(sysPermission);
         if(i == 0){
@@ -47,7 +48,7 @@ public class SysPermissionController {
     }
 
     @ApiOperation(value = "修改权限")
-    @RequestMapping("/SysPermission/update/")
+    @RequestMapping("/syspermission/update/")
     public CommonResult updateSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){
         int i = sysPermissionService.updateSysPermission(sysPermission);
         if(i == 0){
@@ -59,9 +60,9 @@ public class SysPermissionController {
 
     @ApiOperation(value = "列出所有权限")
     @ResponseBody
-    @RequestMapping("/SysPermission/findall/")
-    public CommonResult updateSysPermission( ){
-        List<SysPermission2> allSysPermission = sysPermissionService.findAllSysPermission();
+    @RequestMapping("/syspermission/findall/")
+    public CommonResult updateSysPermission(@ApiParam("页码") @RequestParam  Integer pageIndex,@ApiParam("条数") @RequestParam  Integer pageSize ){
+        List<SysPermission2> allSysPermission = sysPermissionService.findAllSysPermission(pageIndex,pageSize);
         if(allSysPermission  == null){
             return  CommonResult.failed("value is null");
         }else{
@@ -71,7 +72,7 @@ public class SysPermissionController {
 
     @ApiOperation(value = "根据id查询权限")
     @ResponseBody
-    @RequestMapping("/SysPermission/find/{id}")
+    @RequestMapping("/syspermission/find/{id}")
     public CommonResult getSysPermissionById(@PathVariable Integer id){
         SysPermission2 sysPermissionById = sysPermissionService.findSysPermissionById(id);
         if(sysPermissionById == null){

@@ -12,6 +12,8 @@ public interface SysPermissionService {
 
     int addSysPermission(SysPermission2 sysPermission);
 
+    List<SysPermission2> findAllSysPermission(Integer pageIndex,Integer pageSize);
+
     List<SysPermission2> findAllSysPermission();
 
     int updateSysPermission(SysPermission2 sysPermission);

@@ -11,9 +11,12 @@ public interface SysRolePermissionService {
 
     int updateSysRolePermission2( SysRolePermission2 sysSysRolePermission2);
 
-    List< SysRolePermission2> findSysRolePermission2();
+    List< SysRolePermission2> findSysRolePermission2(Integer pageIndex,Integer PageSize);
 
      SysRolePermission2 getSysRolePermission2ById(Integer id);
 
      SysRolePermission2 getSysRolePermission2BySysRolePermission2name(String username);
+
+    List< SysRolePermission2> findSysRolePermission2( );
+
 }

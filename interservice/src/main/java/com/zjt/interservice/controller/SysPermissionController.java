@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -25,21 +26,21 @@ public class SysPermissionController {
     }
 
     @ApiOperation(value = "添加权限")
-    @RequestMapping("/SysPermission/add/")
+    @RequestMapping("/syspermission/add/")
     public CommonResult addSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){ return sysPermissionInter.addSysPermission(sysPermission); }
 
     @ApiOperation(value = "修改权限")
-    @RequestMapping("/SysPermission/update/")
+    @RequestMapping("/syspermission/update/")
     public CommonResult updateSysPermission(@ApiParam("权限实体")  SysPermission2 sysPermission){ return sysPermissionInter.updateSysPermission(sysPermission); }
 
     @ApiOperation(value = "列出所有权限")
     @ResponseBody
-    @RequestMapping("/SysPermission/findall/")
-    public CommonResult updateSysPermission( ){ return sysPermissionInter.updateSysPermission(); }
+    @RequestMapping("/syspermission/findall/")
+    public CommonResult updateSysPermission(@ApiParam("页码") @RequestParam Integer pageIndex, @ApiParam("条数") @RequestParam  Integer pageSize ){ return sysPermissionInter.updateSysPermission(pageIndex,pageSize); }
 
     @ApiOperation(value = "根据id查询权限")
     @ResponseBody
-    @RequestMapping("/SysPermission/find/{id}")
+    @RequestMapping("/syspermission/find/{id}")
     public CommonResult getSysPermissionById(@PathVariable Integer id){ return sysPermissionInter.getSysPermissionById(id); }
 
 }
